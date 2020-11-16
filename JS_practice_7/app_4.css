@@ -1,0 +1,9 @@
+/*
+逆に、表示されている要素を非表示にする。
+*/
+
+.box1 {
+	background-color: #FF0000;
+	height: 200px;
+	width: 200px;
+}

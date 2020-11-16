@@ -1,0 +1,12 @@
+/*
+jQueryを用いると、要素を表示したり、逆に非表示にすることもできる。
+まず、非表示の要素をjQueryを用いて表示させてみる。
+box1が最初は非表示になるように、「display: none;」を追加する。
+*/
+
+.box1 {
+	display: none;
+	background-color: #FF0000;
+	height: 200px;
+	width: 200px;
+}

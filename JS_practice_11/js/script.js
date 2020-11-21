@@ -1,18 +1,45 @@
-// Skipprを利用するには、「スライドショーをどのように動かすのか」をパラメーターとして設定する必要がある。
-// 「js」フォルダ内に例として「script.js」ファイルを作成する。
-
-// オプションを指定してSkipprの実行
-$(".theTarget").skippr({
-	transition : 'fade',  // スライドショーの変化("fade" or "slide")
-	speed : 1000,  // 変化にかかる時間(ミリ秒)
-	easing : 'easeOutQuart',  // easingの種類
-	navType : 'block',  // ナビゲーションの形("block" or "bubble")
-	childrenElementType : 'div',  // 子要素の種類("div" or "img")
-	arrows : true,  // ナビゲーション矢印の表示(trueで表示)
-	autoPlay : false,  // スライドショーの自動再生(falseで自動再生なし)
-	autoPlayDuration : 5000,  // 自動再生時のスライド切替間隔(ミリ秒)
-	keyboardOnAlways : true,  // キーボードの矢印キーによるスライド送りの設定(trueで有効)
-	hidePrevious : false  // １枚目のスライド表示時に戻る矢印を表示するかどうか("false"矢印を隠さない、"true"矢印を隠す)
+$(function(){
+	$('#back a').on('click', function(event){
+		$('body, html').animate({
+			scrollTop:0
+		}, 800);
+		event.preventDefault();
+	});
 });
 
-// 今回は、script.jsファイルの記述でautoPlay:falseを設定しているため、自動の切替はない。
+// $('#back a').on('click', function(event){
+// back内の<a>タグがクリックされたときの処理
+// });
+
+// JS_practice_8では、「マウスクリック」イベントの記述方法を練習した。
+// $('.セレクタ名').イベント名(function(){
+	// イベント発生時に行われる処理
+// });
+
+// JS_practice_8では$('.セレクタ名')だったが、今回は$('#back a')となっている。
+// この構造の読み方は、CSSと同じ。
+// つまり、$('#id名 要素名')と指定すると、id内の子要素に対してのみ指定される。
+// ここでは、id="back"内の<a>タグがクリックされたときに、処理が行われるように記述している。
+
+// .on('click', function(event)
+// クリック後に複数のイベントが行われるようにするため、第１引数にイベント名のclick、第２引数に関数を指定している。
+
+// クリックされたときに行われる処理
+// $('body, html').animate({
+// 		scrollTop:0
+// 	}, 800);
+// 	event.preventDefault();
+// animate()は、アニメーション効果を設定するjQueryの関数。
+// HTML要素のCSSプロパティを変化させることで動きを設定する。
+// 以下のような記述になっている。
+// $('セレクタ名').animate({
+// 	変化対象のプロパティ名:変化値
+// }, アニメーションの動作時間);
+// scrollTopは、スクロール位置を取得できるメソッド。
+// 今回は「scrollTop:0」を指定しているため、「最上部に移動する」の意味になる。
+// また、アニメーションの動作時間を「800」で指定しているので、「800ミリ秒間(0.8秒間)かけてページの最上部まで移動する」の意味になる。
+// アニメーションの動作時間は、ミリ秒で指定する以外にも、「slow」、「normal」、「fast」で指定することも可能。
+// ページ全体に対して処理を実行するため、セレクタには、$('body, html')が設定されている。
+// これは、「body要素またはhtml要素」の意味になる。２つの要素を指定するのは、ユーザの利用環境によって指定対象の要素が変化するため。
+// event.preventDefault();は、aタグの機能を無効にするメソッド。
+// aタグは画面遷移をする機能を保つが、今回は必要ないため無効化している。

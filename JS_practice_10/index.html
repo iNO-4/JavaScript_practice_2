@@ -1,0 +1,56 @@
+<!--
+「Skipper」でスライドショーを作成する。
+Skipprの公式サイトからGithub上でコードを「ZIP」でダウンロード。
+前準備として、作成したフォルダに
+・「css」フォルダに「skippr.css」ファイルを保存
+・「css」フォルダに「style.css」ファイルを保存
+・「js」フォルダに「jquery.min.js」ファイルを保存
+・「js」フォルダに「skippr.min.js」ファイルを保存
+・「img」フォルダに、スライドショーに使いたい画像を保存
+-->
+
+<!--
+サンプルとして「index.html」ファイルを作成し、以下の５つのファイルの読み込みを記述する。
+・skippr.css
+・style.css
+・jquery.min.js
+・skippr.min.js
+・script.js
+
+さらに、５つの画像ファイルが読み込まれるように記述する。
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/skippr.css">
+		<link rel="stylesheet" href="css/style.css">
+		<title>Skipprの練習</title>
+	</head>
+	<body>
+
+		<div class="container">
+			<div class="theTarget">
+				<div style="background-image: url(img/test1.jpg)"></div>
+				<div style="background-image: url(img/test2.jpg)"></div>
+				<div style="background-image: url(img/test3.jpg)"></div>
+				<div style="background-image: url(img/test4.jpg)"></div>
+				<div style="background-image: url(img/test5.jpg)"></div>
+			</div>
+		</div>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skippr.min.js"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>
+
+<!--
+[記述の確認]
+<div style="background-image: url(img/test1.jpg)"></div>
+div要素のstyle属性として、background-imageで背景画像を指定している。
+ただし、親となるdiv要素のcontainerクラスにスタイルが指定されていないため、高さのないdivブロックとなり、画像の表示がされない。
+そのため、containerクラスにスタイルを指定する。
+「css」フォルダ内の「style.css」ファイルに追記する。
+-->

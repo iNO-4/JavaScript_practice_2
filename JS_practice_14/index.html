@@ -1,8 +1,79 @@
 <!--
 [Ajaxについての学習]
-「Ajax」では、JavaScriptの非同期通信を使って、Webサーバ間とデータのやり取りを行う。
+「Ajax(Asynchronous JavaScript + XML)」では、JavaScriptの非同期通信を使って、Webサーバ間とデータのやり取りを行う。
 例えば、TwitterやFacebookで「いいね」ボタンを押すと、すぐに「いいね」アイコンに変わる。
 ページを再読み込みしたり、「送信」ボタンは押していない。
 このように「非同期通信」では、サーバにリクエストを送ったときに、サーバからの結果を待たずに画面が書き換えられる。
 この技術を実装しているのが、Ajax。
+
+Ajaxの仕組みは以下のような流れで行われている。
+(1) イベント(ボタンのクリックなど)がクライアント側で発生する。
+(2) 「API」を使って、サーバにリクエストを送信する(非同期通信)。
+(3) リクエストされた情報の処理をサーバ側で行う。
+(4) 処理の結果を、「JSON」形式でクライアントに送信する。
+(5) レスポンスの結果でページが更新される。
+
+[「Web API」とは]
+API(Application Programming Interface)は、サービス提供者がそのサービスを利用するためのインターフェース。
+「Web API」は、WebサーバやWebブラウザ用のAPI。
+Web APIでは、API提供者とAPI利用者のやり取りをWeb上で行うので、プログラミング言語が異なるアプリケーションでも連携できるのが特徴。
+異なる言語間でも連携できることから、Web API同士を組み合わせて別の価値を生み出すことも可能(マッシュアップ)。
+現在、AmazonやTwitterをはじめ、様々なサービス事業者や企業によって公開され、提供されている。
+例えば、自身のECサイト(ショッピングサイト)にAmazonの商品情報を表示させる場合、
+Amazonが提供するAPIを利用するだけで、簡単に自身のECサイトと紐付けて公開できる。
+Web APIでは、必要なURLを入力して「リクエスト」を行い、その「レスポンス」として結果を受け取っている。
+Web APIの基本になるのは、この「リクエストとレスポンス」。
+
+[「JSON」とは]
+JSON(JavaScript Object Notation)は、テキストベースのデータ交換フォーマット。
+クライアントとサーバ間で「リクエストとレスポンス」を行うには、クライアント(人間)もサーバ(マシン)も互いに理解できるデータ形式にする必要がある。
+その際に利用されているのが、JSON。
+-->
+
+<!--
+Ajaxを用いてプログラムを作成していく。
+今回は、都市名を入力したときに、その都市の天気予報を外部APIから取得し、Ajaxを用いて表示させるプログラムを作成する。
+
+今回は、「OpenWeatherMap」を使用する。特定の都市の天気予報を取得できる無料のAPIサービス。
+APIキーをサイト内から取得する。
+fc9b72c00897f7686cd71d29aca8f207
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf=8" />
+		<title>世界の天気</title>
+	</head>
+	<body>
+		<h3>世界の天気</h3>
+		<label>都市名：</label>
+		<input id="cityname" type="text" size="14" maxlength="14" placeholder="Tokyo">
+		<button id="btn">検索</button><br>
+		<span>場所 :</span>
+		<span id="place"></span><br>
+		<span>最高気温 :</span>
+		<span id="temp_max"></span>
+		<span> ℃</span><br>
+		<span>最低気温 :</span>
+		<span id="temp/min"></span>
+		<span> ℃</span><br>
+		<span>湿度 :</span>
+		<span id="humidity"></span>
+		<span> %</span><br>
+		<span>風速 :</span>
+		<span id="speed"></span>
+		<span> m/s</span><br>
+		<span>天気 :</span>
+		<span id="weather"></span>
+
+		<div id="icon"><img id="img"></div>
+		<script src="jquery.min.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
+
+<!--
+HTMLには、都市名を入力する「テキストボックス」と「検索」ボタンを設定している。
+また、<span>タグにidを指定している箇所は、のちほどAPIから取得した値をjQueryを用いて埋め込む。
 -->
